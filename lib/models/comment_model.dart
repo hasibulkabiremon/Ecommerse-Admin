@@ -1,44 +1,48 @@
-import 'package:ec_com_admin_01/models/user_model.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ecom_user_class/models/user_model.dart';
 
-const String commentModel = 'comment';
-const String commentModelId = 'id';
-const String commentModelUser = 'user';
-const String commentModelPoductId = 'product_id';
-const String commentModelComment = 'comment';
-const String commentModelApproved = 'approved';
+const String collectionComment = 'Comment';
+
+const String commentFieldId = 'commentId';
+const String commentFieldUserModel = 'userModel';
+const String commentFieldProductId = 'productId';
+const String commentFieldComment = 'comment';
+const String commentFieldDate = 'date';
+const String commentFieldApproved = 'approved';
 
 class CommentModel {
-  String cid;
-  UserModel user;
-  String proid;
+  String commentId;
+  UserModel userModel;
+  String productId;
   String comment;
-  bool approved = false;
+  String date;
+  bool approved;
 
   CommentModel({
-    required this.cid,
-    required this.user,
-    required this.proid,
+    required this.commentId,
+    required this.userModel,
+    required this.productId,
     required this.comment,
-    required this.approved,
+    required this.date,
+    this.approved = false,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      commentModelId: cid,
-      commentModelUser: user.toMap(),
-      commentModelPoductId: proid,
-      commentModelComment: comment,
-      commentModelApproved: approved,
+      commentFieldId: commentId,
+      commentFieldUserModel: userModel.toMap(),
+      commentFieldProductId: productId,
+      commentFieldComment: comment,
+      commentFieldDate: date,
+      commentFieldApproved: approved,
     };
   }
 
-  factory CommentModel.fromMap(Map<String, dynamic>map) =>
-      CommentModel(
-        cid: map[commentModelId],
-        user: UserModel.fromMap(map[commentModelUser]),
-        proid: map[commentModelPoductId],
-        comment: map[commentModelComment],
-        approved: map[commentModelApproved],
+  factory CommentModel.fromMap(Map<String, dynamic> map) => CommentModel(
+        commentId: map[commentFieldId],
+        userModel: UserModel.fromMap(map[commentFieldUserModel]),
+        productId: map[commentFieldProductId],
+        comment: map[commentFieldComment],
+        date: map[commentFieldDate],
+        approved: map[commentFieldApproved],
       );
 }

@@ -1,37 +1,37 @@
-import 'package:ec_com_admin_01/models/user_model.dart';
 
-const String ratingModel = 'rating_model';
-const String ratingModelRatingId = 'rating_id';
-const String ratingModelUser = 'user';
-const String ratingModelProductId = 'product_id';
-const String ratingModelRating = 'rating';
+import 'package:ec_com_admin_01/models/user_model.dart';
+const String collectionRating = 'Rating';
+
+const String ratingFieldId = 'ratingId';
+const String ratingFieldUserModel = 'userModel';
+const String ratingFieldProductId = 'productId';
+const String ratingFieldRating = 'rating';
 
 class RatingModel {
-  String rid;
-  UserModel user;
+  String ratingId;
+  UserModel userModel;
   String productId;
   num rating;
 
-  RatingModel({
-    required this.rid,
-    required this.user,
-    required this.productId,
-    required this.rating,
-  });
+  RatingModel(
+      {required this.ratingId,
+      required this.userModel,
+      required this.productId,
+      required this.rating});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      ratingModelRatingId: rid,
-      ratingModelUser: user.toMap(),
-      ratingModelProductId: productId,
-      ratingModelRating: rating,
+      ratingFieldId: ratingId,
+      ratingFieldUserModel: userModel.toMap(),
+      ratingFieldProductId: productId,
+      ratingFieldRating: rating,
     };
   }
 
-  factory RatingModel.fromMap(Map<String, dynamic>map) =>
-      RatingModel(rid: map[ratingModelRatingId],
-        user: UserModel.fromMap(map[ratingModelUser]),
-        productId: map[ratingModelProductId],
-        rating: map[ratingModelRating],
+  factory RatingModel.fromMap(Map<String, dynamic> map) => RatingModel(
+        ratingId: map[ratingFieldId],
+        userModel: UserModel.fromMap(map[ratingFieldUserModel]),
+        productId: map[ratingFieldProductId],
+        rating: map[ratingFieldRating],
       );
 }

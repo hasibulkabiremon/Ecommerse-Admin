@@ -1,61 +1,66 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ec_com_admin_01/models/address_model.dart';
 
-const String userField = 'user';
-const String userFieldUserId = 'user_id';
+import 'address_model.dart';
+
+const String collectionUser = 'user';
+
+const String userFieldId = 'user_id';
 const String userFieldDisplayName = 'display_name';
-const String userFieldAddress = 'address_model';
+const String userFieldAddressModel = 'address_model';
 const String userFieldCreationTime = 'creation_time';
-const String userFieldImage = 'image';
 const String userFieldGender = 'gender';
 const String userFieldAge = 'age';
 const String userFieldPhone = 'phone';
 const String userFieldEmail = 'email';
+const String userFieldImageUrl = 'image';
 
 class UserModel {
-  String? userId;
+  String userId;
   String? displayName;
   AddressModel? addressModel;
   Timestamp? userCreationTime;
-  String? userImageUrl;
   String? gender;
-  num? age;
+  Timestamp? age;
   String? phone;
   String email;
+  String? imageUrl;
 
   UserModel(
-      {this.userId,
+      {required this.userId,
       this.displayName,
       this.addressModel,
       this.userCreationTime,
-      this.userImageUrl,
       this.gender,
       this.age,
       this.phone,
+      this.imageUrl,
       required this.email});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      userFieldUserId: userId,
+      userFieldId: userId,
       userFieldDisplayName: displayName,
-      userFieldAddress: addressModel?.toMap(),
+      userFieldAddressModel: addressModel?.toMap(),
       userFieldCreationTime: userCreationTime,
-      userFieldImage: userImageUrl,
       userFieldGender: gender,
       userFieldAge: age,
       userFieldPhone: phone,
       userFieldEmail: email,
+      userFieldImageUrl: imageUrl,
     };
   }
 
   factory UserModel.fromMap(Map<String, dynamic> map) => UserModel(
-        userId: map[userFieldUserId],
+        userId: map[userFieldId],
         displayName: map[userFieldDisplayName],
-        addressModel: AddressModel.fromMap(map[userFieldAddress]),
+        addressModel: map[userFieldAddressModel] == null
+            ? null
+            : AddressModel.fromMap(map[userFieldAddressModel]),
         userCreationTime: map[userFieldCreationTime],
-        userImageUrl: map[userFieldImage],
-        gender: map[userFieldImage],
+        gender: map[userFieldGender],
+        age: map[userFieldAge],
         phone: map[userFieldPhone],
         email: map[userFieldEmail],
+        imageUrl: map[userFieldImageUrl],
       );
 }
