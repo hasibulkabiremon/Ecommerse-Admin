@@ -47,6 +47,7 @@ dependencies:
   flutter_easyloading:
   connectivity_plus:
   new_gradient_app_bar: ^0.2.0
+  http:
 
 dev_dependencies:
   flutter_test:

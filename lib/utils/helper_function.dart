@@ -17,3 +17,7 @@ gradient() {
   return LinearGradient(colors: [Colors.blue, Colors.purple,Colors.teal]);
 }
 
+Duration getDifference(DateTime dt)  {
+  return DateTime.now().difference(dt);
+}
+

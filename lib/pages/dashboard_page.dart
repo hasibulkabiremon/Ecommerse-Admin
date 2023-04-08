@@ -4,10 +4,13 @@ import 'package:ec_com_admin_01/models/dashboard_model.dart';
 import 'package:ec_com_admin_01/pages/launcher_page.dart';
 import 'package:ec_com_admin_01/provider/order_provider.dart';
 import 'package:ec_com_admin_01/provider/product_provider.dart';
+import 'package:ec_com_admin_01/provider/user_provider.dart';
 import 'package:ec_com_admin_01/utils/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
+
+import '../provider/notification_provider.dart';
 
 class DashBoardPage extends StatelessWidget {
   static const String routeName = '/dashboard';
@@ -20,6 +23,9 @@ class DashBoardPage extends StatelessWidget {
     Provider.of<ProductProvider>(context, listen: false).getAllProducts();
     Provider.of<ProductProvider>(context, listen: false).getAllPurchase();
     Provider.of<OrderProvider>(context, listen: false).getOrderConstants();
+    Provider.of<OrderProvider>(context, listen: false).getOrders();
+    Provider.of<UserProvider>(context, listen: false).getAllUsers();
+    Provider.of<NotificationProvider>(context, listen: false).getAllNotifications();
 
     return Scaffold(
       appBar: NewGradientAppBar(

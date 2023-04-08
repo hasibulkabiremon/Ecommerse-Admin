@@ -6,23 +6,33 @@ import 'package:flutter/material.dart';
 import '../auth/authservice.dart';
 import '../models/order_item.dart';
 
-class OrderProvider extends ChangeNotifier{
+class OrderProvider extends ChangeNotifier {
   OrderConstantModel orderConstantModel = OrderConstantModel();
   List<OrderModel> orderList = [];
   List<OrderItem> orderItemList = [];
+
+  OrderModel getOrderById(String id) {
+    return orderList.firstWhere((element) => element.orderId == id);
+  }
+
+  getOrders() {
+    DbHelper.getAllOrders().listen((snapshot) {
+      orderList = List.generate(snapshot.docs.length,
+          (index) => OrderModel.fromMap(snapshot.docs[index].data()));
+      notifyListeners();
+    });
+  }
 
   getAllOrders() {
     DbHelper.getAllOrdersByUser(AuthService.currentUser!.uid)
         .listen((snapshot) {
       orderList = List.generate(snapshot.docs.length,
-              (index) => OrderModel.fromMap(snapshot.docs[index].data()));
+          (index) => OrderModel.fromMap(snapshot.docs[index].data()));
       orderItemList =
           orderList.map((order) => OrderItem(orderModel: order)).toList();
       notifyListeners();
     });
   }
-
-
 
   getOrderConstants() {
     DbHelper.getOrderConstants().listen((snapshot) {
@@ -33,9 +43,11 @@ class OrderProvider extends ChangeNotifier{
     });
   }
 
-  
-
   Future<void> updateOrderConstants(OrderConstantModel model) {
     return DbHelper.updateOrderConstants(model);
+  }
+
+  Future<void> updateOrderStatus(String orderId, String status) {
+    return DbHelper.updateOrderStatus(orderId, status);
   }
 }

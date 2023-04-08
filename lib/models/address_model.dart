@@ -29,7 +29,7 @@ class AddressModel {
   factory AddressModel.fromMap(Map<String, dynamic> map) => AddressModel(
         addressLine1: map[addressFieldLine1],
         addressLine2: map[addressFieldLine2],
-        city: map[addressFieldCity],
+        city: map[addressFieldCity] ?? 'Not Found',
         zipcode: map[addressFieldZipcode],
       );
 }

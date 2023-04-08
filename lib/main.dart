@@ -3,6 +3,8 @@ import 'package:ec_com_admin_01/pages/category_page.dart';
 import 'package:ec_com_admin_01/pages/dashboard_page.dart';
 import 'package:ec_com_admin_01/pages/launcher_page.dart';
 import 'package:ec_com_admin_01/pages/login_page.dart';
+import 'package:ec_com_admin_01/pages/notification_page.dart';
+import 'package:ec_com_admin_01/pages/order_details_Page.dart';
 import 'package:ec_com_admin_01/pages/order_page.dart';
 import 'package:ec_com_admin_01/pages/product_details_page.dart';
 import 'package:ec_com_admin_01/pages/product_repurchase_page.dart';
@@ -10,8 +12,10 @@ import 'package:ec_com_admin_01/pages/report_page.dart';
 import 'package:ec_com_admin_01/pages/setting_page.dart';
 import 'package:ec_com_admin_01/pages/user_list_page.dart';
 import 'package:ec_com_admin_01/pages/view_product_page.dart';
+import 'package:ec_com_admin_01/provider/notification_provider.dart';
 import 'package:ec_com_admin_01/provider/order_provider.dart';
 import 'package:ec_com_admin_01/provider/product_provider.dart';
+import 'package:ec_com_admin_01/provider/user_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -24,6 +28,8 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => ProductProvider()),
         ChangeNotifierProvider(create: (_) => OrderProvider()),
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => NotificationProvider()),
       ],
       child: MyApp()));
 }
@@ -61,10 +67,12 @@ class MyApp extends StatelessWidget {
         ProductDetailsPage.routeName:(_) =>const ProductDetailsPage(),
         CategoryPage.routeName:(_) =>const CategoryPage(),
         OrderListPage.routeName:(_) =>const OrderListPage(),
+        OrderDetailsPage.routeName:(_) =>const OrderDetailsPage(),
         ReportPage.routeName:(_) =>const ReportPage(),
         SettingsPage.routeName:(_) =>const SettingsPage(),
         ProductRepurchasePage.routeName:(_) =>const ProductRepurchasePage(),
         UserListPage.routeName:(_) =>const UserListPage(),
+        NotificationPage.routeName:(_) =>const NotificationPage(),
       },
     );
   }
