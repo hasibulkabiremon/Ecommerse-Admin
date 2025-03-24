@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ec_com_admin_01/models/product_model.dart';
 import 'package:ec_com_admin_01/pages/product_repurchase_page.dart';
@@ -8,7 +7,6 @@ import 'package:ec_com_admin_01/utils/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import '../customwidget/image_holder_view.dart';
@@ -38,9 +36,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NewGradientAppBar(
+        appBar: AppBar(
         title: Text(productModel.productName!),
-        gradient: gradient(),
+        backgroundColor: Colors.white70,
       ),
       body: ListView(
         children: [

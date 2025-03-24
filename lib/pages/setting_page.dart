@@ -3,7 +3,6 @@ import 'package:ec_com_admin_01/provider/order_provider.dart';
 import 'package:ec_com_admin_01/utils/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -45,9 +44,9 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NewGradientAppBar(
+      appBar: AppBar(
         title: Text('Settings'),
-        gradient: gradient(),
+        backgroundColor: Colors.white70,
       ),
       body: Center(
         child: Form(

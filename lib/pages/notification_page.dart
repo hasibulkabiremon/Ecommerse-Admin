@@ -2,13 +2,10 @@ import 'package:ec_com_admin_01/models/notification_model.dart';
 import 'package:ec_com_admin_01/pages/product_details_page.dart';
 import 'package:ec_com_admin_01/pages/user_list_page.dart';
 import 'package:flutter/material.dart';
-import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
-
 import '../provider/notification_provider.dart';
 import '../utils/constants.dart';
 import '../utils/helper_function.dart';
-import 'order_details_Page.dart';
 import 'order_page.dart';
 
 class NotificationPage extends StatelessWidget {
@@ -19,9 +16,9 @@ class NotificationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NewGradientAppBar(
+      appBar: AppBar(
         title: const Text('Notifications'),
-        gradient: gradient(),
+        backgroundColor: Colors.white70,
       ),
       body: Consumer<NotificationProvider>(
         builder: (context, provider, child) => ListView.builder(

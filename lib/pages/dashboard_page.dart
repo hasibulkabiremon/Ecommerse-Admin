@@ -7,7 +7,6 @@ import 'package:ec_com_admin_01/provider/product_provider.dart';
 import 'package:ec_com_admin_01/provider/user_provider.dart';
 import 'package:ec_com_admin_01/utils/helper_function.dart';
 import 'package:flutter/material.dart';
-import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/notification_provider.dart';
@@ -28,7 +27,7 @@ class DashBoardPage extends StatelessWidget {
     Provider.of<NotificationProvider>(context, listen: false).getAllNotifications();
 
     return Scaffold(
-      appBar: NewGradientAppBar(
+      appBar: AppBar(
         title: const Text('DashBoard'),
         actions: [
           IconButton(
@@ -39,7 +38,7 @@ class DashBoardPage extends StatelessWidget {
             icon: const Icon(Icons.logout),
           )
         ],
-        gradient: gradient(),
+        backgroundColor: Colors.white70,
       ),
       body: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

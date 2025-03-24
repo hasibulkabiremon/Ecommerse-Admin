@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../models/date_model.dart';
@@ -32,9 +31,9 @@ class _ProductRepurchasePageState extends State<ProductRepurchasePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NewGradientAppBar(
+      appBar: AppBar(
         title: const Text('Re-Purchase'),
-        gradient: gradient(),
+        backgroundColor: Colors.white70,
       ),
       body: Center(
         child: Form(
@@ -43,7 +42,7 @@ class _ProductRepurchasePageState extends State<ProductRepurchasePage> {
             shrinkWrap: true,
             padding: const EdgeInsets.all(24),
             children: [
-              Text(productModel.productName!, style: Theme.of(context).textTheme.headline5,),
+              Text(productModel.productName!, style: Theme.of(context).textTheme.headlineLarge,),
               const Divider(height: 2, color: Colors.grey,),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4.0),

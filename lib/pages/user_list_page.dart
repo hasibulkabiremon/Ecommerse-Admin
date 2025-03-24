@@ -1,6 +1,5 @@
 import 'package:ec_com_admin_01/utils/helper_function.dart';
 import 'package:flutter/material.dart';
-import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/user_provider.dart';
@@ -13,9 +12,9 @@ class UserListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NewGradientAppBar(
+      appBar: AppBar(
         title: const Text('Users'),
-        gradient: gradient(),
+        backgroundColor: Colors.white70,
       ),
       body: Consumer<UserProvider>(
         builder: (context, provider, child) => ListView.builder(

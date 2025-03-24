@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
 import '../provider/product_provider.dart';
 import '../utils/helper_function.dart';
@@ -39,7 +38,7 @@ class _AddProductPageState extends State<AddProductPage> {
   CategoryModel? categoryModel;
   DateTime? purchaseDate;
   ImageSource _imageSource = ImageSource.gallery;
-  late StreamSubscription<ConnectivityResult> subscription;
+  late StreamSubscription<List<ConnectivityResult>> subscription;
   bool _isConnected = true;
 
   @override
@@ -50,14 +49,14 @@ class _AddProductPageState extends State<AddProductPage> {
       });
     });
     subscription = Connectivity().onConnectivityChanged.listen((result) {
-      if (result == ConnectivityResult.wifi ||
-          result == ConnectivityResult.mobile) {
+      if (result.contains(ConnectivityResult.wifi) ||
+          result.contains(ConnectivityResult.mobile)) {
         setState(() {
           _isConnected = true;
         });
       } else {
         setState(() {
-          _isConnected = true;
+          _isConnected = false;
         });
       }
     });
@@ -73,14 +72,14 @@ class _AddProductPageState extends State<AddProductPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NewGradientAppBar(
+      appBar: AppBar(
         title: const Text('New Product'),
         actions: [
           IconButton(
               onPressed: _isConnected ? _saveProduct : null,
               icon: Icon(Icons.save))
         ],
-        gradient: gradient(),
+        backgroundColor: Colors.white70,
       ),
       body: Form(
         key: _formKey,

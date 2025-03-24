@@ -2,7 +2,6 @@ import 'package:ec_com_admin_01/provider/order_provider.dart';
 import 'package:ec_com_admin_01/utils/constants.dart';
 import 'package:ec_com_admin_01/utils/helper_function.dart';
 import 'package:flutter/material.dart';
-import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
 
 import 'order_details_Page.dart';
@@ -15,9 +14,9 @@ class OrderListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final id = ModalRoute.of(context)!.settings.arguments as String?;
     return Scaffold(
-      appBar: NewGradientAppBar(
+      appBar: AppBar(
         title: const Text('Orders'),
-        gradient: gradient(),
+        backgroundColor: Colors.white70,
       ),
       body: Consumer<OrderProvider>(
         builder: (context, provider, child) {

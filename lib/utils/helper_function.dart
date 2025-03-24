@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 
 Future<bool> isConnectedToInternet() async {
   var result = await (Connectivity().checkConnectivity());
-  return result == ConnectivityResult.wifi || result == ConnectivityResult.mobile;
+  return result.contains(ConnectivityResult.wifi) || result.contains(ConnectivityResult.mobile);
 }
 
 showMsg(BuildContext context, String msg) =>
